@@ -1,479 +1,1641 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta charset="UTF-8">
+<title>For My Mama ❤️</title>
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+<style>
 
-    <title>For My Mama ❤️</title>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <link rel="stylesheet" href="style.css">
+html {
+    scroll-behavior: smooth;
+}
 
+body {
+    min-height: 100vh;
+    font-family: Georgia, "Times New Roman", serif;
+    background:
+        radial-gradient(circle at top, #741f4e 0%, #28091f 45%, #0d020b 100%);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* ================================
+   FLOATING HEARTS
+================================ */
+
+#hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.floating-heart {
+    position: absolute;
+    bottom: -50px;
+    font-size: 20px;
+    animation: floatUp linear forwards;
+    opacity: 0.75;
+}
+
+@keyframes floatUp {
+
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* ================================
+   MUSIC BUTTON
+================================ */
+
+#musicButton {
+    position: fixed;
+    top: 20px;
+    right: 25px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.35);
+    background: rgba(20,0,15,0.7);
+    color: #d69cff;
+    font-size: 25px;
+    cursor: pointer;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+}
+
+#musicButton:hover {
+    transform: scale(1.1);
+}
+
+/* ================================
+   PAGES
+================================ */
+
+.page {
+    min-height: 100vh;
+    width: 100%;
+    display: none;
+    position: relative;
+    z-index: 2;
+    padding: 40px 20px;
+}
+
+.page.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ================================
+   COMMON
+================================ */
+
+.center {
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+}
+
+.small-title {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 6px;
+    color: #ff75aa;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: clamp(45px, 8vw, 90px);
+    line-height: 0.95;
+    color: #ff6fa7;
+    text-shadow: 0 0 25px rgba(255,70,150,0.3);
+}
+
+h1 span {
+    color: #ffd0e3;
+}
+
+h2 {
+    color: #ff8bb9;
+    margin: 20px 0;
+}
+
+.sub {
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #f4dce8;
+    margin: 15px auto;
+    max-width: 600px;
+}
+
+/* ================================
+   BUTTON
+================================ */
+
+.main-button {
+    margin-top: 30px;
+    padding: 15px 28px;
+    border: 1px solid #ff77ad;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #8d1e58, #42102f);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 0 25px rgba(255,75,150,0.25);
+    transition: 0.3s;
+}
+
+.main-button:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 0 35px rgba(255,75,150,0.5);
+}
+
+/* ================================
+   PAGE 1
+================================ */
+
+.glow-heart {
+    font-size: 75px;
+    margin-bottom: 15px;
+    animation: heartbeat 1.4s infinite;
+}
+
+@keyframes heartbeat {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.18);
+    }
+}
+
+/* ================================
+   PAGE 2
+================================ */
+
+.glass {
+    width: 100%;
+    max-width: 650px;
+    padding: 45px 35px;
+    text-align: center;
+    border: 1px solid rgba(255,150,200,0.35);
+    border-radius: 25px;
+    background: rgba(50,5,35,0.65);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 20px 70px rgba(0,0,0,0.4);
+}
+
+.mini-heart {
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.glass p {
+    font-family: Arial, sans-serif;
+    line-height: 1.8;
+    color: #f4dce8;
+    margin: 15px 0;
+}
+
+/* ================================
+   PAGE 3 - QUESTIONS
+================================ */
+
+.question-card {
+    width: 100%;
+    max-width: 650px;
+    padding: 35px;
+    border-radius: 25px;
+    background: rgba(35,5,28,0.8);
+    border: 1px solid rgba(255,120,180,0.35);
+    box-shadow: 0 20px 70px rgba(0,0,0,0.5);
+}
+
+.question-top {
+    display: flex;
+    justify-content: space-between;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: #ff8dbb;
+    margin-bottom: 35px;
+}
+
+.question-heart {
+    font-size: 55px;
+    text-align: center;
+}
+
+#question {
+    text-align: center;
+    font-size: 28px;
+}
+
+.hint {
+    text-align: center;
+    color: #d6a9bd;
+    font-family: Arial, sans-serif;
+    margin-bottom: 25px;
+}
+
+.option {
+    width: 100%;
+    padding: 14px 18px;
+    margin: 10px 0;
+    border-radius: 15px;
+    border: 1px solid rgba(255,130,180,0.3);
+    background: rgba(255,255,255,0.06);
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: left;
+    transition: 0.25s;
+}
+
+.option:hover {
+    background: rgba(255,100,170,0.2);
+    transform: translateX(4px);
+}
+
+.progress {
+    width: 100%;
+    height: 7px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    margin-top: 25px;
+    overflow: hidden;
+}
+
+#progressBar {
+    width: 6.66%;
+    height: 100%;
+    background: #ff6fa7;
+    transition: width 0.3s;
+}
+
+/* ================================
+   PAGE 4 - PHOTO
+================================ */
+
+.photo-content {
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+}
+
+#photoTitle {
+    font-size: 30px;
+}
+
+.photo-frame {
+    width: 100%;
+    max-width: 650px;
+    margin: 20px auto;
+    padding: 8px;
+    border: 8px solid #ff9bc3;
+    border-radius: 30px;
+    background: #000;
+    box-shadow:
+        0 0 25px rgba(255,80,160,0.4),
+        0 20px 70px rgba(0,0,0,0.5);
+    overflow: hidden;
+}
+
+#memoryPhoto {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 70vh;
+    min-height: 250px;
+    object-fit: contain;
+    border-radius: 18px;
+    background: #12040e;
+}
+
+.photo-text {
+    font-family: Arial, sans-serif;
+    color: #f4dce8;
+    font-size: 17px;
+    line-height: 1.7;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+/* ================================
+   PAGE 5 - STORY
+================================ */
+
+.story-content {
+    max-width: 700px;
+    text-align: center;
+}
+
+.story-content h1 {
+    font-size: clamp(40px, 7vw, 70px);
+    margin-bottom: 35px;
+}
+
+.story-lines p {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.8;
+    margin: 18px 0;
+    color: #f5dce8;
+}
+
+.story-lines h2 {
+    font-size: 50px;
+    margin: 35px 0;
+}
+
+/* ================================
+   PAGE 6
+================================ */
+
+.birthday-icon {
+    font-size: 90px;
+    animation: heartbeat 1.4s infinite;
+}
+
+#birthdayPage h1 {
+    font-size: clamp(55px, 9vw, 100px);
+}
+
+#birthdayPage h2 {
+    font-size: 30px;
+}
+
+/* ================================
+   PAGE 7 - LETTER
+================================ */
+
+.letter-wrapper {
+    width: 100%;
+    max-width: 750px;
+    text-align: center;
+}
+
+.letter {
+    margin-top: 25px;
+    padding: 35px;
+    border-radius: 25px;
+    background:
+        linear-gradient(
+            rgba(255,245,248,0.97),
+            rgba(255,228,238,0.97)
+        );
+    color: #4a162e;
+    text-align: left;
+    box-shadow: 0 20px 70px rgba(0,0,0,0.45);
+}
+
+.letter p {
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.letter h3 {
+    text-align: center;
+    color: #a51f5d;
+    margin: 25px 0;
+    line-height: 1.6;
+}
+
+.final-wish {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(255,105,165,0.15);
+    font-weight: bold;
+    line-height: 1.8;
+}
+
+.final-wish span {
+    color: #a51f5d;
+}
+
+.last-line {
+    text-align: center;
+    color: #a51f5d !important;
+    font-weight: bold;
+    font-size: 19px !important;
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 600px) {
+
+    .page {
+        padding: 70px 15px 35px;
+    }
+
+    #musicButton {
+        top: 15px;
+        right: 15px;
+        width: 48px;
+        height: 48px;
+        font-size: 21px;
+    }
+
+    .small-title {
+        font-size: 9px;
+        letter-spacing: 4px;
+    }
+
+    h1 {
+        font-size: 43px;
+    }
+
+    .sub {
+        font-size: 15px;
+    }
+
+    .glass {
+        padding: 30px 20px;
+    }
+
+    .question-card {
+        padding: 25px 18px;
+    }
+
+    #question {
+        font-size: 23px;
+    }
+
+    .photo-frame {
+        width: 100%;
+        border-width: 6px;
+        padding: 5px;
+        border-radius: 20px;
+    }
+
+    #memoryPhoto {
+        min-height: 220px;
+        max-height: 65vh;
+        border-radius: 12px;
+    }
+
+    #photoTitle {
+        font-size: 24px;
+    }
+
+    .letter {
+        padding: 23px 18px;
+    }
+
+    .letter p {
+        font-size: 15px;
+    }
+
+    .letter h3 {
+        font-size: 18px;
+    }
+
+}
+
+/* Prevent broken-image icon from looking ugly */
+
+#memoryPhoto:not([src]),
+#memoryPhoto[src=""] {
+    display: none;
+}
+
+</style>
 </head>
 
 <body>
 
-    <!-- FLOATING BACKGROUND -->
-    <div id="hearts"></div>
+<!-- ================================
+     MUSIC
+================================ -->
 
-    <!-- MUSIC -->
-    <audio id="music" loop preload="auto">
-        <source src="music/song.mp3" type="audio/mpeg">
-    </audio>
+<audio id="music" loop preload="metadata">
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
 
-    <button id="musicButton"
-            onclick="toggleMusic()">
-        🎵
-    </button>
+<button id="musicButton" onclick="toggleMusic()" aria-label="Play music">
+    🎵
+</button>
 
 
-    <!-- =====================================
-         PAGE 1
-    ====================================== -->
+<!-- ================================
+     FLOATING HEARTS
+================================ -->
 
-    <section class="page active" id="home">
+<div id="hearts"></div>
 
-        <div class="center">
 
-            <div class="glow-heart">
-                ❤️
-            </div>
+<!-- ================================
+     PAGE 1
+================================ -->
 
-            <p class="small-title">
-                MAMA...
-            </p>
+<section class="page active" id="home">
 
-            <h1>
-                Konjam<br>
-                <span>wait pannu.</span>
-            </h1>
+    <div class="center">
 
-            <p class="sub">
-                Innaiku unoda most beautyful first surprise...
-            </p>
+        <div class="glow-heart">
+            ❤️
+        </div>
 
-            <p class="sub">
-                Aana idhu normal surprise illa. 👀
-            </p>
+        <p class="small-title">
+            MAMA...
+        </p>
 
-            <button class="main-button"
-                    onclick="openSurprise()">
+        <h1>
+            Konjam<br>
+            <span>wait pannu.</span>
+        </h1>
 
-                Surprise-ah open pannalama? 🔐❤️
+        <p class="sub">
+            Innaiku unoda most beautyful first surprise...
+        </p>
 
-            </button>
+        <p class="sub">
+            Aana idhu normal surprise illa. 👀
+        </p>
+
+        <button class="main-button" onclick="openSurprise()">
+            Surprise-ah open pannalama? 🔐❤️
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     PAGE 2
+================================ -->
+
+<section class="page" id="secret">
+
+    <div class="glass">
+
+        <div class="mini-heart">
+            💌
+        </div>
+
+        <p class="small-title">
+            ORU CHINNA SECRET
+        </p>
+
+        <h2>
+            Mama...
+        </h2>
+
+        <p>
+            Un birthday-ku naan kudukka pora
+            first gift ithu.
+        </p>
+
+        <p>
+            Enakku romba precious-aana
+            namma memories-ah
+            unakkaaga oru chinna world aa
+            maathiten. ❤️
+        </p>
+
+        <p>
+            Aana adha full-ah paakanumna...
+            oru small challenge irukku. 😏
+        </p>
+
+        <button class="main-button" onclick="beginQuestions()">
+            Challenge-ku ready-ah? 😌❤️
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     PAGE 3
+     QUESTIONS
+================================ -->
+
+<section class="page" id="questionPage">
+
+    <div class="question-card">
+
+        <div class="question-top">
+
+            <span>
+                MAMA-KKU ORU TEST 😌
+            </span>
+
+            <span id="counter">
+                01 / 15
+            </span>
 
         </div>
 
-    </section>
+        <div class="question-heart">
+            ❤️
+        </div>
+
+        <h2 id="question">
+            Kelvi
+        </h2>
+
+        <p class="hint" id="hint">
+            Hint
+        </p>
+
+        <div id="options"></div>
+
+        <div class="progress">
+            <div id="progressBar"></div>
+        </div>
+
+    </div>
+
+</section>
 
 
-    <!-- =====================================
-         PAGE 2
-    ====================================== -->
+<!-- ================================
+     PAGE 4
+     PHOTO
+================================ -->
 
-    <section class="page" id="secret">
+<section class="page" id="photoPage">
 
-        <div class="glass">
+    <div class="photo-content">
 
-            <div class="mini-heart">
-                💌
-            </div>
+        <p class="small-title" id="memoryNumber">
+            NAMMA NINAIVU 01
+        </p>
 
-            <p class="small-title">
-                ORU CHINNA SECRET
+        <h2 id="photoTitle">
+            Oru Azhagana Ninaivu ❤️
+        </h2>
+
+        <div class="photo-frame">
+
+            <img
+                id="memoryPhoto"
+                src="photo%201.jpg"
+                alt="Namma Ninaivu"
+                loading="eager"
+            >
+
+        </div>
+
+        <p id="photoText" class="photo-text">
+            Oru azhagana memory ❤️
+        </p>
+
+        <button class="main-button" onclick="nextMemory()">
+            Adutha Ninaivukku Polama? ❤️
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     PAGE 5
+================================ -->
+
+<section class="page" id="storyPage">
+
+    <div class="story-content">
+
+        <p class="small-title">
+            NAMMA KATHAI
+        </p>
+
+        <h1>
+            24 • 11 • 2022
+        </h1>
+
+        <div class="story-lines">
+
+            <p>
+                Andha naal-la aarambicha
+                oru chinna kathai... ❤️
+            </p>
+
+            <p>
+                Appo enakku theriyala...
+                indha naal en life-la
+                ivlo special-a maarum nu.
+            </p>
+
+            <p>
+                Sila moments sirippu... 😊
+            </p>
+
+            <p>
+                Sila moments kovam... 😤
+            </p>
+
+            <p>
+                Sila moments sanda... 😂
+            </p>
+
+            <p>
+                Aana every moment-layum...
             </p>
 
             <h2>
-                Mama...
+                NAMMA ❤️
             </h2>
-
-            <p>
-                Un birthday-ku naan kudukka pora
-                 first gift ithu .
-            </p>
-
-            <p>
-                Enakku romba precious-aana
-                namma memories-ah
-                unakkaaga oru chinna world aa
-                maathiten. ❤️
-            </p>
-
-            <p>
-                Aana adha full-ah paakanumna...
-                oru small challenge irukku. 😏
-            </p>
-
-            <button class="main-button"
-                    onclick="beginQuestions()">
-
-                Challenge-ku ready-ah? 😌❤️
-
-            </button>
 
         </div>
 
-    </section>
+        <button class="main-button" onclick="showBirthday()">
+            Ippo Actual Surprise... 👀
+        </button>
+
+    </div>
+
+</section>
 
 
-    <!-- =====================================
-         PAGE 3
-         QUESTIONS
-    ====================================== -->
+<!-- ================================
+     PAGE 6
+================================ -->
 
-    <section class="page" id="questionPage">
+<section class="page" id="birthdayPage">
 
-        <div class="question-card">
+    <div class="center">
 
-            <div class="question-top">
+        <div class="birthday-icon">
+            🎂
+        </div>
+
+        <p class="small-title">
+            IPPO DHAAN...
+        </p>
+
+        <h1>
+            HAPPY<br>
+            <span>Birthday daaaa</span>
+        </h1>
+
+        <h2>
+            my laduuuu kuttyyy ❤️
+        </h2>
+
+        <p class="sub">
+            Un birthday-ku
+            en manasula irundhu
+            oru chinna gift. 🥹
+        </p>
+
+        <button class="main-button" onclick="showLetter()">
+            En Manasula Irukkuradha Padi 💌
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     PAGE 7
+================================ -->
+
+<section class="page" id="letterPage">
+
+    <div class="letter-wrapper">
+
+        <p class="small-title">
+            <h3>EN MANASULA IRUNDHU SOLLURA ❤️</h3>
+        </p>
+
+        <h2>
+            THANGAMEYYY...
+        </h2>
+
+        <div class="letter">
+
+            <p>
+                Un b'day ku
+                naan unnaku kudukura oru oru giftsum
+                unaakaga naa pathu pathuu theddii thedii
+                vanguna theriyuma...
+            </p>
+
+            <p>
+                Appo dhaan enakku thonuchu...
+                namma memoriesum
+                enakku kidaicha romba precious
+                gift-nu. ❤️
+            </p>
+
+            <p>
+                24 November 2022-la aarambicha
+                namma kathai,
+                ippo almost 4 years-a
+                en life-oda oru beautiful
+                part-a maariduchu.
+            </p>
+
+            <p>
+                Namma perfect couple nu solla mudiyathu da Mama.
+                Sila neram sanda poduvom.
+                Sila neram kovapaduvom.
+                Sila neram pesaama iruppom.
+                couples marilanamma nadanthu kittathu illa...
+                😂❤️
+            </p>
+
+            <p>
+                Aana ellathayum vida...
+            </p>
+
+            <h3>
+                NAMMA LOVE DHAAN MUKKIYAM. ❤️<br>
+                NEETHA DA MAMA ENNAKU ORU APPAVAA CARE PANNIKURA. ❤️
+            </h3>
+
+            <p>
+                Nee enakku lover mattum illa.
+                Nee en best friend.
+                Nee en comfort person.
+                Nee enakku smile varra
+                oru reason.
+            </p>
+
+            <p>
+                Un birthday-la naan wish panradhu
+                romba simple.
+            </p>
+
+            <p>
+                Nee happy-ah irukkanum.
+                Un dreams ellam achieve pannanum.
+                Nee virumbura life-ah
+                nee vaazhanum.
+            </p>
+
+            <p>
+                Andha journey-la...
+            </p>
+
+            <h3>
+                NAANUM UN PAKKATHULA IRUKKANUM. ❤️
+            </h3>
+
+            <p>
+                Innum neraya birthdays
+                un kooda celebrate pannanum. 🎂
+            </p>
+
+            <p>
+                Innum neraya photos
+                edukkanum. 📸
+            </p>
+
+            <p>
+                Innum neraya places
+                poganum. 🌎
+            </p>
+
+            <p>
+                Innum neraya sandai
+                podanum. 😂
+            </p>
+
+            <p>
+                Adha vida neraya
+                sirikkanum. 🥹
+            </p>
+
+            <p>
+                Old age varaikkum
+                un pakkathula ukkandhu,
+                namma old memories ellam
+                paathu serndhu sirikkanum.
+            </p>
+
+            <h3>
+                NAMMA KATHAI-KU MUDIVU VENDAM. ❤️
+            </h3>
+
+            <h3>
+                INNUM NERAYA CHAPTERS VENUM. ♾️
+            </h3>
+
+            <div class="final-wish">
+
+                Wish you many more happy returns of the day
+                <br>
 
                 <span>
-                    MAMA-KKU ORU TEST 😌
-                </span>
-
-                <span id="counter">
-                    01 / 15
+                    My dear lovable darling purusaa ❤️🎂
                 </span>
 
             </div>
 
-            <div class="question-heart"
-                 id="questionIcon">
-                ❤️
-            </div>
-
-            <h2 id="question">
-                Kelvi
-            </h2>
-
-            <p class="hint"
-               id="hint">
-                Hint
+            <p class="last-line">
+                Unna romba love pandra da...
+                innaiku mattum illa...
+                ovvoru naalum. ❤️
             </p>
-
-            <div id="options"></div>
-
-            <div class="progress">
-
-                <div id="progressBar"></div>
-
-            </div>
 
         </div>
 
-    </section>
+    </div>
 
+</section>
 
-    <!-- =====================================
-         PAGE 4
-         PHOTO
-    ====================================== -->
 
-    <section class="page" id="photoPage">
+<script>
 
-        <div class="photo-content">
+/* =========================================
+   PAGE CONTROL
+========================================= */
 
-            <p class="small-title"
-               id="memoryNumber">
+function showPage(pageId) {
 
-                NAMMA NINAIVU 01
+    document.querySelectorAll(".page").forEach(function(page) {
+        page.classList.remove("active");
+    });
 
-            </p>
+    document.getElementById(pageId).classList.add("active");
 
-            <h2 id="photoTitle">
-                Oru Azhagana Ninaivu ❤️
-            </h2>
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
 
 
-            <div class="photo-frame">
+/* =========================================
+   MUSIC
+========================================= */
 
-                <img id="memoryPhoto"
-                     src=""
-                     alt="Namma Ninaivu">
+const music = document.getElementById("music");
+const musicButton = document.getElementById("musicButton");
 
-            </div>
+let musicStarted = false;
 
+function toggleMusic() {
 
-            <p id="photoText"
-               class="photo-text">
-            </p>
+    if (music.paused) {
 
+        music.play()
+            .then(function() {
 
-            <button class="main-button"
-                    onclick="nextMemory()">
+                musicStarted = true;
+                musicButton.textContent = "🔊";
 
-                Adutha Ninaivukku Polama? ❤️
+            })
+            .catch(function(error) {
 
-            </button>
+                console.log("Music could not start:", error);
 
-        </div>
+                alert(
+                    "Please tap the music button again to start the song ❤️"
+                );
 
-    </section>
+            });
 
+    } else {
 
-    <!-- =====================================
-         PAGE 5
-         STORY
-    ====================================== -->
+        music.pause();
+        musicButton.textContent = "🎵";
 
-    <section class="page" id="storyPage">
+    }
+}
 
-        <div class="story-content">
 
-            <p class="small-title">
-                NAMMA KATHAI
-            </p>
+/*
+   Mobile browsers block autoplay.
 
-            <h1>
-                24 • 11 • 2022
-            </h1>
+   So we start the music only after
+   the user clicks a button.
+*/
 
-            <div class="story-lines">
+function startMusic() {
 
-                <p>
-                    Andha naal-la aarambicha
-                    oru chinna kathai... ❤️
-                </p>
+    if (!musicStarted) {
 
-                <p>
-                    Appo enakku theriyala...
-                    indha naal en life-la
-                    ivlo special-a maarum nu.
-                </p>
+        music.play()
+            .then(function() {
 
-                <p>
-                    Sila moments sirippu... 😊
-                </p>
+                musicStarted = true;
+                musicButton.textContent = "🔊";
 
-                <p>
-                    Sila moments kovam... 😤
-                </p>
+            })
+            .catch(function() {
 
-                <p>
-                    Sila moments sanda... 😂
-                </p>
+                console.log("Waiting for user interaction.");
 
-                <p>
-                    Aana every moment-layum...
-                </p>
+            });
 
-                <h2>
-                    NAMMA ❤️
-                </h2>
+    }
 
-            </div>
+}
 
-            <button class="main-button"
-                    onclick="showBirthday()">
 
-                Ippo Actual Surprise... 👀
+/* =========================================
+   PAGE 1
+========================================= */
 
-            </button>
+function openSurprise() {
 
-        </div>
+    startMusic();
+
+    showPage("secret");
+
+}
+
+
+/* =========================================
+   PAGE 2
+========================================= */
+
+function beginQuestions() {
+
+    startMusic();
+
+    currentQuestion = 0;
+
+    showPage("questionPage");
+
+    loadQuestion();
+
+}
+
+
+/* =========================================
+   QUESTIONS
+========================================= */
+
+const questions = [
+
+    {
+        question: "Namma first meet eppo? ❤️",
+        hint: "Think about our beginning...",
+        options: [
+            "2022",
+            "2021",
+            "2023",
+            "2020"
+        ],
+        answer: 0
+    },
+
+    {
+        question: "Namma special date enna? ❤️",
+        hint: "Very important date!",
+        options: [
+            "24 November 2022",
+            "14 February 2022",
+            "1 January 2023",
+            "25 December 2022"
+        ],
+        answer: 0
+    },
+
+    {
+        question: "Naan unakku enna? 😌",
+        hint: "Think carefully...",
+        options: [
+            "Best friend",
+            "Stranger",
+            "Classmate",
+            "Enemy"
+        ],
+        answer: 0
+    },
+
+    {
+        question: "Namma memories eppadi irukku? 🥹",
+        hint: "One word...",
+        options: [
+            "Precious",
+            "Boring",
+            "Normal",
+            "Nothing"
+        ],
+        answer: 0
+    },
+
+    {
+        question: "Namma life-la enna mukkiyam? ❤️",
+        hint: "You already know!",
+        options: [
+            "Namma Love",
+            "Money",
+            "Phone",
+            "Games"
+        ],
+        answer: 0
+    },
+
+    {
+        question: "Unakku naan yaaru? ❤️",
+        hint: "Your special person...",
+        options: [
+            "Comfort person",
+            "Stranger",
+            "Teacher",
+            "Neighbour"
+        ],
+        answer: 0
+    },
+
+    {
+        question: "Namma enna romba pannuvom? 😂",
+        hint: "Sometimes it becomes funny...",
+        options: [
+            "Sandai",
+            "Sleeping",
+            "Studying",
+            "Cooking"
+        ],
+        answer: 0
+    },
+
+    {
+        question: "Sandai-ku apram enna varum? 😌",
+        hint: "Usually...",
+        options: [
+            "Sirippu",
+            "Nothing",
+            "Exam",
+            "Sleep"
+        ],
+        answer: 0
+    },
+
+    {
+        question: "Namma innum neraya enna pannanum? 📸",
+        hint: "Memory maker...",
+        options: [
+            "Photos edukkanum",
+            "Nothing",
+            "Fight",
+            "Sleep"
+        ],
+        answer: 0
+    },
+
+    {
+        question: "Namma enga poganum? 🌎",
+        hint: "Many places!",
+        options: [
+            "Neraya places",
+            "Only home",
+            "Only college",
+            "Nowhere"
+        ],
+        answer: 0
+    },
+
+    {
+        question: "Namma old age varaikkum enna pannanum? 🥹",
+        hint: "Think about our memories...",
+        options: [
+            "Serndhu sirikkanum",
+            "Separate",
+            "Forget everything",
+            "Nothing"
+        ],
+        answer: 0
+    },
+
+    {
+        question: "Un birthday-ku enna gift? 🎁",
+        hint: "Something from my heart...",
+        options: [
+            "Namma memories",
+            "Nothing",
+            "A book",
+            "A pen"
+        ],
+        answer: 0
+    },
+
+    {
+        question: "Nee enna achieve pannanum? ❤️",
+        hint: "My wish for you...",
+        options: [
+            "Un dreams ellam",
+            "Nothing",
+            "Only money",
+            "Only marks"
+        ],
+        answer: 0
+    },
+
+    {
+        question: "Namma kathai-ku mudivu venduma? ❤️",
+        hint: "The answer is obvious...",
+        options: [
+            "Vendam",
+            "Venum",
+            "Maybe",
+            "Don't know"
+        ],
+        answer: 0
+    },
+
+    {
+        question: "Innum neraya chapters venuma? ♾️❤️",
+        hint: "Final question...",
+        options: [
+            "VENUM ❤️",
+            "VENAM",
+            "Maybe",
+            "No"
+        ],
+        answer: 0
+    }
+
+];
+
+let currentQuestion = 0;
+
+
+function loadQuestion() {
+
+    const data = questions[currentQuestion];
+
+    document.getElementById("question").textContent =
+        data.question;
+
+    document.getElementById("hint").textContent =
+        data.hint;
+
+    document.getElementById("counter").textContent =
+        String(currentQuestion + 1).padStart(2, "0")
+        + " / "
+        + questions.length;
+
+    const progress =
+        ((currentQuestion + 1) / questions.length) * 100;
+
+    document.getElementById("progressBar").style.width =
+        progress + "%";
+
+    const optionsContainer =
+        document.getElementById("options");
+
+    optionsContainer.innerHTML = "";
+
+    data.options.forEach(function(option, index) {
+
+        const button =
+            document.createElement("button");
+
+        button.className = "option";
+
+        button.textContent =
+            option;
+
+        button.onclick = function() {
+
+            checkAnswer(index);
+
+        };
+
+        optionsContainer.appendChild(button);
+
+    });
+
+}
+
+
+function checkAnswer(selected) {
+
+    const correct =
+        questions[currentQuestion].answer;
+
+    if (selected === correct) {
+
+        currentQuestion++;
+
+        if (currentQuestion >= questions.length) {
+
+            showPhoto();
+
+        } else {
+
+            loadQuestion();
+
+        }
+
+    } else {
+
+        alert(
+            "Aiyo 😌 Wrong answer! Try again ❤️"
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   PHOTO MEMORY
+========================================= */
+
+const memories = [
+
+    {
+        image: "photo%201.jpg",
+        title: "Oru Azhagana Ninaivu ❤️",
+        text: "Namma first beautiful memory... ❤️"
+    },
+
+    {
+        image: "photo%202.jpg",
+        title: "Namma Ninaivu 02 ❤️",
+        text: "Indha moment romba special... 🥹"
+    },
+
+    {
+        image: "photo%203.jpg",
+        title: "Namma Ninaivu 03 ❤️",
+        text: "Innum oru beautiful memory... ❤️"
+    },
+
+    {
+        image: "photo%204.jpg",
+        title: "Namma Ninaivu 04 ❤️",
+        text: "Indha photo paatha udane smile varudhu... 😊"
+    },
+
+    {
+        image: "photo%205.jpg",
+        title: "Namma Ninaivu 05 ❤️",
+        text: "Our precious memory... 🥰"
+    },
+
+    {
+        image: "photo%206.jpg",
+        title: "Namma Ninaivu 06 ❤️",
+        text: "Another beautiful moment... ❤️"
+    },
+
+    {
+        image: "photo%207.jpg",
+        title: "Namma Ninaivu 07 ❤️",
+        text: "This moment will always be special... 🥹"
+    },
+
+    {
+        image: "photo%208.jpg",
+        title: "Namma Ninaivu 08 ❤️",
+        text: "Namma memories are priceless... ❤️"
+    },
+
+    {
+        image: "photo%209.jpg",
+        title: "Namma Ninaivu 09 ❤️",
+        text: "One more beautiful memory... 😊"
+    },
+
+    {
+        image: "photo%2010.jpg",
+        title: "Namma Ninaivu 10 ❤️",
+        text: "Indha moment-ah marakka mudiyadhu... ❤️"
+    },
+
+    {
+        image: "photo%2011.jpg",
+        title: "Namma Ninaivu 11 ❤️",
+        text: "A memory close to my heart... 🥹"
+    },
+
+    {
+        image: "photo%2012.jpg",
+        title: "Namma Ninaivu 12 ❤️",
+        text: "Another chapter of our story... ❤️"
+    },
+
+    {
+        image: "photo%2013.jpg",
+        title: "Namma Ninaivu 13 ❤️",
+        text: "Still one of my favourite memories... 🥰"
+    },
+
+    {
+        image: "photo%2014.jpg",
+        title: "Namma Ninaivu 14 ❤️",
+        text: "So many memories, so much love... ❤️"
+    },
 
-    </section>
+    {
+        image: "photo%2015.jpg",
+        title: "Namma Ninaivu 15 ❤️",
+        text: "Last memory... but not the last chapter. ♾️❤️"
+    }
 
+];
 
-    <!-- =====================================
-         PAGE 6
-         BIRTHDAY
-    ====================================== -->
+let currentMemory = 0;
 
-    <section class="page" id="birthdayPage">
 
-        <div class="center">
+function showPhoto() {
 
-            <div class="birthday-icon">
-                🎂
-            </div>
+    currentMemory = 0;
 
-            <p class="small-title">
-                IPPO DHAAN...
-            </p>
+    showPage("photoPage");
 
-            <h1>
-                HAPPY<br>
-                <span> Birthday daaaa </span>
-            </h1>
+    loadMemory();
 
-            <h2>
-                my laduuuu kuttyyy ❤️
-            </h2>
+}
 
-            <p class="sub">
-                Un birthday-ku
-                en manasula irundhu
-                oru chinna gift. 🥹
-            </p>
 
-            <button class="main-button"
-                    onclick="showLetter()">
+function loadMemory() {
 
-                En Manasula Irukkuradha Padi 💌
+    const memory =
+        memories[currentMemory];
 
-            </button>
+    const photo =
+        document.getElementById("memoryPhoto");
 
-        </div>
+    /*
+       IMPORTANT:
+       Use the exact GitHub filename.
 
-    </section>
+       Spaces are written as %20 so that
+       GitHub Pages and mobile browsers
+       handle the path correctly.
+    */
 
+    photo.src = memory.image;
 
-    <!-- =====================================
-         PAGE 7
-         LETTER
-    ====================================== -->
+    photo.alt =
+        memory.title;
 
-    <section class="page" id="letterPage">
+    document.getElementById("memoryNumber")
+        .textContent =
+        "NAMMA NINAIVU "
+        + String(currentMemory + 1).padStart(2, "0");
 
-        <div class="letter-wrapper">
+    document.getElementById("photoTitle")
+        .textContent =
+        memory.title;
 
-            <p class="small-title">
-               <H3> EN MANASULA IRUNDHU SOLLURA❤️ </H3>
-            </p>
+    document.getElementById("photoText")
+        .textContent =
+        memory.text;
 
-            <h2>
-               THANGAMEYYY...
-            </h2>
-
-            <div class="letter">
+}
 
-                <p>
-                    Un b'day ku
-                    naan unnaku kudukura oru oru giftsum unaakaga 
-                    naa pathu pathuu theddii thedii vanguna theriyuma...
-                </p>
-
-                <p>
-                    Appo dhaan enakku thonuchu...
-                    namma memoriesum
-                    enakku kidaicha romba precious
-                    gift-nu. ❤️
-                </p>
 
-                <p>
-                    24 November 2022-la aarambicha
-                    namma kathai,
-                    ippo almost 4 years-a
-                    en life-oda oru beautiful
-                    part-a maariduchu.
-                </p>
+function nextMemory() {
 
-                <p>
-                    Namma perfect couple nu solla mudiyathu da Mama .
-                    Sila neram sanda poduvom.
-                    Sila neram kovapaduvom.
-                    Sila neram pesaama iruppom.
-                    couples marilanamma nadanthu kittathu illa...
-                    😂❤️
-                </p>
+    currentMemory++;
 
-                <p>
-                    Aana ellathayum vida...
-                </p>
+    if (currentMemory >= memories.length) {
 
-                <h3>
-                    NAMMA LOVE DHAAN MUKKIYAM. ❤️
-                    NEETHA DA MAMA ENNAKU ORU APPAVAA CARE PANNIKURA.❤️
-                </h3>
+        showPage("storyPage");
 
-                <p>
-                    Nee enakku lover mattum illa.
-                    Nee en best friend.
-                    Nee en comfort person.
-                    Nee enakku smile varra
-                    oru reason.
-                </p>
+    } else {
 
-                <p>
-                    Un birthday-la naan wish panradhu
-                    romba simple.
-                </p>
+        loadMemory();
 
-                <p>
-                    Nee happy-ah irukkanum.
-                    Un dreams ellam achieve pannanum.
-                    Nee virumbura life-ah
-                    nee vaazhanum.
-                </p>
+    }
 
-                <p>
-                    Andha journey-la...
-                </p>
+}
 
-                <h3>
-                    NAANUM UN PAKKATHULA IRUKKANUM. ❤️
-                </h3>
 
-                <p>
-                    Innum neraya birthdays
-                    un kooda celebrate pannanum. 🎂
-                </p>
+/* =========================================
+   PAGE 5
+========================================= */
 
-                <p>
-                    Innum neraya photos
-                    edukkanum. 📸
-                </p>
+function showBirthday() {
 
-                <p>
-                    Innum neraya places
-                    poganum. 🌎
-                </p>
+    showPage("birthdayPage");
 
-                <p>
-                    Innum neraya sandai
-                    podanum. 😂
-                </p>
+}
 
-                <p>
-                    Adha vida neraya
-                    sirikkanum. 🥹
-                </p>
 
-                <p>
-                    Old age varaikkum
-                    un pakkathula ukkandhu,
-                    namma old memories ellam
-                    paathu serndhu sirikkanum.
-                </p>
+/* =========================================
+   PAGE 6
+========================================= */
 
-                <h3>
-                    NAMMA KATHAI-KU MUDIVU VENDAM. ❤️
-                </h3>
+function showLetter() {
 
-                <h3>
-                    INNUM NERAYA CHAPTERS VENUM. ♾️
-                </h3>
+    showPage("letterPage");
 
-                <div class="final-wish">
+}
 
-                    Wish you many more happy returns of the day <br>
 
-                    <span>
-                        My dear lovable darling purusaa ❤️🎂
-                    </span>
+/* =========================================
+   FLOATING HEARTS
+========================================= */
 
-                </div>
+function createHeart() {
 
-                <p class="last-line">
-                    Unna romba love pandra da...
-                    innaiku mattum illa...
-                    ovvoru naalum. ❤️
-                </p>
+    const heart =
+        document.createElement("div");
 
-            </div>
+    heart.className =
+        "floating-heart";
 
-        </div>
+    heart.textContent =
+        Math.random() > 0.5 ? "❤️" : "💗";
 
-    </section>
+    heart.style.left =
+        Math.random() * 100 + "%";
 
+    heart.style.fontSize =
+        (12 + Math.random() * 22) + "px";
 
-    <script src="script.js"></script>
+    heart.style.animationDuration =
+        (5 + Math.random() * 6) + "s";
+
+    document
+        .getElementById("hearts")
+        .appendChild(heart);
+
+    setTimeout(function() {
+
+        heart.remove();
+
+    }, 12000);
+
+}
+
+setInterval(createHeart, 700);
+
+
+/* =========================================
+   IMAGE ERROR HANDLING
+========================================= */
+
+document
+    .getElementById("memoryPhoto")
+    .addEventListener("error", function() {
+
+        console.log(
+            "Image could not be loaded."
+        );
+
+        this.alt =
+            "Image could not be loaded";
+
+        this.style.display =
+            "block";
+
+    });
+
+
+/* =========================================
+   START
+========================================= */
+
+window.addEventListener("load", function() {
+
+    /*
+       Preload all images so they are ready
+       when the user reaches the memory page.
+    */
+
+    memories.forEach(function(memory) {
+
+        const img =
+            new Image();
+
+        img.src =
+            memory.image;
+
+    });
+
+});
+
+</script>
 
 </body>
-
 </html>
