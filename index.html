@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>For My Mama ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- FLOATING BACKGROUND -->
+    <div id="hearts"></div>
+
+    <!-- MUSIC -->
+    <audio id="music" loop preload="auto">
+        <source src="music/song.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="musicButton"
+            onclick="toggleMusic()">
+        🎵
+    </button>
+
+
+    <!-- =====================================
+         PAGE 1
+    ====================================== -->
+
+    <section class="page active" id="home">
+
+        <div class="center">
+
+            <div class="glow-heart">
+                ❤️
+            </div>
+
+            <p class="small-title">
+                MAMA...
+            </p>
+
+            <h1>
+                Konjam<br>
+                <span>wait pannu.</span>
+            </h1>
+
+            <p class="sub">
+                Innaiku unoda most beautyful first surprise...
+            </p>
+
+            <p class="sub">
+                Aana idhu normal surprise illa. 👀
+            </p>
+
+            <button class="main-button"
+                    onclick="openSurprise()">
+
+                Surprise-ah open pannalama? 🔐❤️
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         PAGE 2
+    ====================================== -->
+
+    <section class="page" id="secret">
+
+        <div class="glass">
+
+            <div class="mini-heart">
+                💌
+            </div>
+
+            <p class="small-title">
+                ORU CHINNA SECRET
+            </p>
+
+            <h2>
+                Mama...
+            </h2>
+
+            <p>
+                Un birthday-ku naan kudukka pora
+                 first gift ithu .
+            </p>
+
+            <p>
+                Enakku romba precious-aana
+                namma memories-ah
+                unakkaaga oru chinna world aa
+                maathiten. ❤️
+            </p>
+
+            <p>
+                Aana adha full-ah paakanumna...
+                oru small challenge irukku. 😏
+            </p>
+
+            <button class="main-button"
+                    onclick="beginQuestions()">
+
+                Challenge-ku ready-ah? 😌❤️
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         PAGE 3
+         QUESTIONS
+    ====================================== -->
+
+    <section class="page" id="questionPage">
+
+        <div class="question-card">
+
+            <div class="question-top">
+
+                <span>
+                    MAMA-KKU ORU TEST 😌
+                </span>
+
+                <span id="counter">
+                    01 / 15
+                </span>
+
+            </div>
+
+            <div class="question-heart"
+                 id="questionIcon">
+                ❤️
+            </div>
+
+            <h2 id="question">
+                Kelvi
+            </h2>
+
+            <p class="hint"
+               id="hint">
+                Hint
+            </p>
+
+            <div id="options"></div>
+
+            <div class="progress">
+
+                <div id="progressBar"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         PAGE 4
+         PHOTO
+    ====================================== -->
+
+    <section class="page" id="photoPage">
+
+        <div class="photo-content">
+
+            <p class="small-title"
+               id="memoryNumber">
+
+                NAMMA NINAIVU 01
+
+            </p>
+
+            <h2 id="photoTitle">
+                Oru Azhagana Ninaivu ❤️
+            </h2>
+
+
+            <div class="photo-frame">
+
+                <img id="memoryPhoto"
+                     src=""
+                     alt="Namma Ninaivu">
+
+            </div>
+
+
+            <p id="photoText"
+               class="photo-text">
+            </p>
+
+
+            <button class="main-button"
+                    onclick="nextMemory()">
+
+                Adutha Ninaivukku Polama? ❤️
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         PAGE 5
+         STORY
+    ====================================== -->
+
+    <section class="page" id="storyPage">
+
+        <div class="story-content">
+
+            <p class="small-title">
+                NAMMA KATHAI
+            </p>
+
+            <h1>
+                24 • 11 • 2022
+            </h1>
+
+            <div class="story-lines">
+
+                <p>
+                    Andha naal-la aarambicha
+                    oru chinna kathai... ❤️
+                </p>
+
+                <p>
+                    Appo enakku theriyala...
+                    indha naal en life-la
+                    ivlo special-a maarum nu.
+                </p>
+
+                <p>
+                    Sila moments sirippu... 😊
+                </p>
+
+                <p>
+                    Sila moments kovam... 😤
+                </p>
+
+                <p>
+                    Sila moments sanda... 😂
+                </p>
+
+                <p>
+                    Aana every moment-layum...
+                </p>
+
+                <h2>
+                    NAMMA ❤️
+                </h2>
+
+            </div>
+
+            <button class="main-button"
+                    onclick="showBirthday()">
+
+                Ippo Actual Surprise... 👀
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         PAGE 6
+         BIRTHDAY
+    ====================================== -->
+
+    <section class="page" id="birthdayPage">
+
+        <div class="center">
+
+            <div class="birthday-icon">
+                🎂
+            </div>
+
+            <p class="small-title">
+                IPPO DHAAN...
+            </p>
+
+            <h1>
+                HAPPY<br>
+                <span> Birthday daaaa </span>
+            </h1>
+
+            <h2>
+                my laduuuu kuttyyy ❤️
+            </h2>
+
+            <p class="sub">
+                Un birthday-ku
+                en manasula irundhu
+                oru chinna gift. 🥹
+            </p>
+
+            <button class="main-button"
+                    onclick="showLetter()">
+
+                En Manasula Irukkuradha Padi 💌
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         PAGE 7
+         LETTER
+    ====================================== -->
+
+    <section class="page" id="letterPage">
+
+        <div class="letter-wrapper">
+
+            <p class="small-title">
+               <H3> EN MANASULA IRUNDHU SOLLURA❤️ </H3>
+            </p>
+
+            <h2>
+               THANGAMEYYY...
+            </h2>
+
+            <div class="letter">
+
+                <p>
+                    Un b'day ku
+                    naan unnaku kudukura oru oru giftsum unaakaga 
+                    naa pathu pathuu theddii thedii vanguna theriyuma...
+                </p>
+
+                <p>
+                    Appo dhaan enakku thonuchu...
+                    namma memoriesum
+                    enakku kidaicha romba precious
+                    gift-nu. ❤️
+                </p>
+
+                <p>
+                    24 November 2022-la aarambicha
+                    namma kathai,
+                    ippo almost 4 years-a
+                    en life-oda oru beautiful
+                    part-a maariduchu.
+                </p>
+
+                <p>
+                    Namma perfect couple nu solla mudiyathu da Mama .
+                    Sila neram sanda poduvom.
+                    Sila neram kovapaduvom.
+                    Sila neram pesaama iruppom.
+                    couples marilanamma nadanthu kittathu illa...
+                    😂❤️
+                </p>
+
+                <p>
+                    Aana ellathayum vida...
+                </p>
+
+                <h3>
+                    NAMMA LOVE DHAAN MUKKIYAM. ❤️
+                    NEETHA DA MAMA ENNAKU ORU APPAVAA CARE PANNIKURA.❤️
+                </h3>
+
+                <p>
+                    Nee enakku lover mattum illa.
+                    Nee en best friend.
+                    Nee en comfort person.
+                    Nee enakku smile varra
+                    oru reason.
+                </p>
+
+                <p>
+                    Un birthday-la naan wish panradhu
+                    romba simple.
+                </p>
+
+                <p>
+                    Nee happy-ah irukkanum.
+                    Un dreams ellam achieve pannanum.
+                    Nee virumbura life-ah
+                    nee vaazhanum.
+                </p>
+
+                <p>
+                    Andha journey-la...
+                </p>
+
+                <h3>
+                    NAANUM UN PAKKATHULA IRUKKANUM. ❤️
+                </h3>
+
+                <p>
+                    Innum neraya birthdays
+                    un kooda celebrate pannanum. 🎂
+                </p>
+
+                <p>
+                    Innum neraya photos
+                    edukkanum. 📸
+                </p>
+
+                <p>
+                    Innum neraya places
+                    poganum. 🌎
+                </p>
+
+                <p>
+                    Innum neraya sandai
+                    podanum. 😂
+                </p>
+
+                <p>
+                    Adha vida neraya
+                    sirikkanum. 🥹
+                </p>
+
+                <p>
+                    Old age varaikkum
+                    un pakkathula ukkandhu,
+                    namma old memories ellam
+                    paathu serndhu sirikkanum.
+                </p>
+
+                <h3>
+                    NAMMA KATHAI-KU MUDIVU VENDAM. ❤️
+                </h3>
+
+                <h3>
+                    INNUM NERAYA CHAPTERS VENUM. ♾️
+                </h3>
+
+                <div class="final-wish">
+
+                    Wish you many more happy returns of the day <br>
+
+                    <span>
+                        My dear lovable darling purusaa ❤️🎂
+                    </span>
+
+                </div>
+
+                <p class="last-line">
+                    Unna romba love pandra da...
+                    innaiku mattum illa...
+                    ovvoru naalum. ❤️
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
