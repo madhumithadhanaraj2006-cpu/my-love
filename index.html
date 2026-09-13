@@ -2,234 +2,220 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>For My Mama ❤️</title>
 
 <style>
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
     min-height: 100vh;
-    background:
-        radial-gradient(circle at 50% 30%, #5d123d 0%, #260819 45%, #0d030b 100%);
-    color: white;
     font-family: Georgia, "Times New Roman", serif;
+    background:
+        radial-gradient(circle at top, #64153f, #260819 45%, #0d030b);
+    color: white;
     overflow-x: hidden;
 }
 
 /* Floating hearts */
-
-.heart {
+.floating-heart {
     position: fixed;
-    font-size: 22px;
+    font-size: 25px;
     opacity: 0.5;
-    animation: floatHeart 7s linear infinite;
-    z-index: 1;
+    animation: float 8s linear infinite;
     pointer-events: none;
+    z-index: 0;
 }
 
-.heart:nth-child(1) {
-    left: 8%;
-    animation-delay: 0s;
-}
+.heart1 { left: 8%; animation-delay: 0s; }
+.heart2 { left: 25%; animation-delay: 2s; }
+.heart3 { left: 70%; animation-delay: 4s; }
+.heart4 { left: 88%; animation-delay: 1s; }
 
-.heart:nth-child(2) {
-    left: 25%;
-    animation-delay: 2s;
-}
-
-.heart:nth-child(3) {
-    left: 60%;
-    animation-delay: 4s;
-}
-
-.heart:nth-child(4) {
-    left: 85%;
-    animation-delay: 1s;
-}
-
-@keyframes floatHeart {
-
-    0% {
+@keyframes float {
+    from {
         bottom: -50px;
-        transform: translateX(0) rotate(0deg);
+        transform: translateY(0) rotate(0deg);
     }
 
-    100% {
+    to {
         bottom: 110%;
-        transform: translateX(50px) rotate(360deg);
+        transform: translateY(-100px) rotate(360deg);
     }
 }
 
-/* Main container */
-
+/* Main */
 .container {
     width: 100%;
-    max-width: 1100px;
+    max-width: 1000px;
     margin: auto;
-    padding: 40px 20px 80px;
+    padding: 45px 20px 80px;
     position: relative;
     z-index: 2;
 }
 
-/* Small heading */
-
+/* Heading */
 .subtitle {
     text-align: center;
+    color: #ff83b2;
     font-family: Arial, sans-serif;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: bold;
-    letter-spacing: 7px;
-    color: #ff82b0;
-    margin-top: 10px;
-    margin-bottom: 25px;
+    letter-spacing: 6px;
+    margin-bottom: 20px;
 }
-
-/* Main title */
 
 h1 {
     text-align: center;
     color: #ff70a5;
-    font-size: clamp(42px, 7vw, 78px);
-    line-height: 1.05;
+    font-size: clamp(42px, 7vw, 75px);
+    line-height: 1.1;
     margin-bottom: 20px;
-    text-shadow: 0 0 20px rgba(255, 80, 150, 0.3);
 }
 
-/* Big heart */
-
-.big-heart {
+.main-heart {
     text-align: center;
-    font-size: 65px;
-    margin-bottom: 35px;
-    animation: heartbeat 1.5s infinite;
+    font-size: 60px;
+    margin-bottom: 45px;
+    animation: beat 1.5s infinite;
 }
 
-@keyframes heartbeat {
-
-    0%, 100% {
-        transform: scale(1);
-    }
-
+@keyframes beat {
     50% {
         transform: scale(1.12);
     }
 }
 
 /* Music button */
-
 .music-button {
     position: fixed;
-    top: 25px;
-    right: 25px;
+    top: 20px;
+    right: 20px;
+
     width: 55px;
     height: 55px;
+
     border-radius: 50%;
-    border: 1px solid #9f638b;
-    background: rgba(20, 0, 15, 0.7);
-    color: #b986ff;
-    font-size: 25px;
+    border: 1px solid #a86b96;
+
+    background: rgba(20, 0, 15, 0.9);
+    color: #b98cff;
+
+    font-size: 24px;
     cursor: pointer;
-    z-index: 100;
+
+    z-index: 1000;
 }
 
-.music-button:hover {
-    transform: scale(1.08);
+.music-button:active {
+    transform: scale(0.95);
 }
 
-/* Photo frame */
-
-.photo-frame {
+/* Memory card */
+.memory {
     width: 100%;
-    max-width: 650px;
-    margin: auto;
-    padding: 8px;
-    border-radius: 30px;
-    background: linear-gradient(135deg, #e95b9b, #ffb4d0);
-    box-shadow: 0 0 30px rgba(255, 80, 150, 0.35);
+    max-width: 700px;
+    margin: 0 auto 70px;
+
+    padding: 30px 25px;
+
+    background: rgba(75, 10, 50, 0.45);
+
+    border: 1px solid rgba(255, 130, 180, 0.3);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.35);
 }
 
-/* Image */
-
-.photo-frame img {
-    display: block;
-    width: 100%;
-    height: auto;
-    min-height: 300px;
-    max-height: 700px;
-    object-fit: contain;
-    background: #000;
-    border-radius: 22px;
-}
-
-/* Caption */
-
-.caption {
+/* Question */
+.question {
+    color: #ff78aa;
+    font-size: 27px;
+    line-height: 1.4;
     text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 12px;
-    margin-bottom: 30px;
-    color: white;
-}
 
-/* Gallery */
-
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-    margin-top: 40px;
-}
-
-.gallery img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    border-radius: 18px;
-    border: 3px solid #df5d96;
-    background: #000;
-    transition: transform 0.3s ease;
-}
-
-.gallery img:hover {
-    transform: scale(1.04);
-}
-
-/* Message */
-
-.message {
-    max-width: 750px;
-    margin: 50px auto 0;
-    padding: 30px;
-    border-radius: 25px;
-    background: rgba(80, 10, 50, 0.35);
-    border: 1px solid rgba(255, 120, 180, 0.3);
-    text-align: center;
-    line-height: 1.8;
-    font-size: 19px;
-}
-
-.message h2 {
-    color: #ff78a9;
     margin-bottom: 15px;
 }
 
-/* Mobile */
+/* Answer */
+.answer {
+    color: #ffffff;
+    font-size: 19px;
+    line-height: 1.7;
+    text-align: center;
 
-@media (max-width: 700px) {
+    margin-bottom: 25px;
+}
+
+/* Photo */
+.photo-box {
+    width: 100%;
+
+    padding: 7px;
+
+    background: linear-gradient(
+        135deg,
+        #e95b9b,
+        #ffb4d0
+    );
+
+    border-radius: 25px;
+}
+
+.photo-box img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    max-height: 650px;
+
+    object-fit: contain;
+
+    border-radius: 18px;
+
+    background: black;
+}
+
+/* Photo number */
+.photo-number {
+    text-align: center;
+    color: #ff9ac0;
+
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+
+    margin-top: 15px;
+
+    letter-spacing: 2px;
+}
+
+/* Final message */
+.final-message {
+    text-align: center;
+    padding: 30px 15px;
+}
+
+.final-message h2 {
+    color: #ff78aa;
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.final-message p {
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
 
     .container {
         padding: 30px 12px 60px;
@@ -238,83 +224,79 @@ h1 {
     .subtitle {
         font-size: 9px;
         letter-spacing: 4px;
-        margin-bottom: 18px;
     }
 
     h1 {
         font-size: 40px;
-        padding: 0 5px;
     }
 
-    .big-heart {
+    .main-heart {
         font-size: 50px;
-        margin-bottom: 25px;
+        margin-bottom: 30px;
     }
 
     .music-button {
         width: 48px;
         height: 48px;
-        top: 15px;
-        right: 15px;
-        font-size: 21px;
+
+        top: 12px;
+        right: 12px;
+
+        font-size: 20px;
     }
 
-    .photo-frame {
-        padding: 6px;
-        border-radius: 20px;
+    .memory {
+        padding: 22px 14px;
+        margin-bottom: 45px;
+        border-radius: 22px;
     }
 
-    .photo-frame img {
-        min-height: 220px;
+    .question {
+        font-size: 22px;
+    }
+
+    .answer {
+        font-size: 16px;
+    }
+
+    .photo-box {
+        padding: 5px;
+        border-radius: 18px;
+    }
+
+    .photo-box img {
+        border-radius: 13px;
         max-height: 500px;
-        border-radius: 15px;
     }
 
-    .caption {
-        font-size: 17px;
+    .final-message h2 {
+        font-size: 27px;
     }
 
-    .gallery {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        margin-top: 25px;
-    }
-
-    .gallery img {
-        border-radius: 12px;
-        border-width: 2px;
-    }
-
-    .message {
-        margin-top: 35px;
-        padding: 20px 15px;
+    .final-message p {
         font-size: 16px;
     }
 }
-
 </style>
 </head>
 
 <body>
 
 <!-- Floating hearts -->
-
-<div class="heart">❤️</div>
-<div class="heart">💗</div>
-<div class="heart">💕</div>
-<div class="heart">❤️</div>
+<div class="floating-heart heart1">❤️</div>
+<div class="floating-heart heart2">💕</div>
+<div class="floating-heart heart3">💗</div>
+<div class="floating-heart heart4">❤️</div>
 
 <!-- Music -->
-
-<audio id="backgroundMusic" loop preload="auto">
+<audio id="song" loop preload="auto">
     <source src="./song.mp3" type="audio/mpeg">
 </audio>
 
 <button
     class="music-button"
     id="musicButton"
-    onclick="toggleMusic()"
-    aria-label="Play music">
+    onclick="playMusic()">
     🎵
 </button>
 
@@ -328,98 +310,443 @@ h1 {
         Andha Azhagana Moment
     </h1>
 
-    <div class="big-heart">
+    <div class="main-heart">
         ❤️
     </div>
 
-    <!-- Main photo -->
 
-    <div class="photo-frame">
+    <!-- MEMORY 1 -->
 
-        <img
-            src="./photo%201.jpg"
-            alt="Namma Ninaivu"
-            onerror="this.style.display='none';">
+    <div class="memory">
 
-    </div>
+        <h2 class="question">
+            Question 1: Do you remember this beautiful moment? ❤️
+        </h2>
 
-    <div class="caption">
-        Namma Ninaivu ❤️
-    </div>
+        <p class="answer">
+            Answer: Of course! This is one of those moments
+            that I will always keep close to my heart. 💕
+        </p>
 
-    <!-- Photo gallery -->
+        <div class="photo-box">
+            <img
+                src="./photo%201.jpg"
+                alt="Memory 1">
+        </div>
 
-    <div class="gallery">
-
-        <img src="./photo%201.jpg" alt="Memory 1">
-
-        <img src="./photo%202.jpg" alt="Memory 2">
-
-        <img src="./photo%203.jpg" alt="Memory 3">
-
-        <img src="./photo%204.jpg" alt="Memory 4">
-
-        <img src="./photo%205.jpg" alt="Memory 5">
-
-        <img src="./photo%206.jpg" alt="Memory 6">
-
-        <img src="./photo%207.jpg" alt="Memory 7">
-
-        <img src="./photo%208.jpg" alt="Memory 8">
-
-        <img src="./photo%209.jpg" alt="Memory 9">
-
-        <img src="./photo%2010.jpg" alt="Memory 10">
-
-        <img src="./photo%2011.jpg" alt="Memory 11">
-
-        <img src="./photo%2012.jpg" alt="Memory 12">
-
-        <img src="./photo%2013.jpg" alt="Memory 13">
-
-        <img src="./photo%2014.jpg" alt="Memory 14">
-
-        <img src="./photo%2015.jpg" alt="Memory 15">
+        <div class="photo-number">
+            MEMORY 01
+        </div>
 
     </div>
 
-    <div class="message">
 
-        <h2>For My Mama ❤️</h2>
+    <!-- MEMORY 2 -->
+
+    <div class="memory">
+
+        <h2 class="question">
+            Question 2: What makes this moment special? 💗
+        </h2>
+
+        <p class="answer">
+            Answer: Because every little moment spent together
+            becomes a beautiful memory. ❤️
+        </p>
+
+        <div class="photo-box">
+            <img
+                src="./photo%202.jpg"
+                alt="Memory 2">
+        </div>
+
+        <div class="photo-number">
+            MEMORY 02
+        </div>
+
+    </div>
+
+
+    <!-- MEMORY 3 -->
+
+    <div class="memory">
+
+        <h2 class="question">
+            Question 3: Would you like to live this moment again? 🥰
+        </h2>
+
+        <p class="answer">
+            Answer: Yes! Some moments are simply too beautiful
+            to experience only once. ❤️
+        </p>
+
+        <div class="photo-box">
+            <img
+                src="./photo%203.jpg"
+                alt="Memory 3">
+        </div>
+
+        <div class="photo-number">
+            MEMORY 03
+        </div>
+
+    </div>
+
+
+    <!-- MEMORY 4 -->
+
+    <div class="memory">
+
+        <h2 class="question">
+            Question 4: Can a picture keep a memory alive? 📸
+        </h2>
+
+        <p class="answer">
+            Answer: Yes. Every time we see this picture,
+            the beautiful memory comes back. 💕
+        </p>
+
+        <div class="photo-box">
+            <img
+                src="./photo%204.jpg"
+                alt="Memory 4">
+        </div>
+
+        <div class="photo-number">
+            MEMORY 04
+        </div>
+
+    </div>
+
+
+    <!-- MEMORY 5 -->
+
+    <div class="memory">
+
+        <h2 class="question">
+            Question 5: What do you feel when you see this photo? ❤️
+        </h2>
+
+        <p class="answer">
+            Answer: Happiness, love and a little smile
+            that comes without even trying. 😊
+        </p>
+
+        <div class="photo-box">
+            <img
+                src="./photo%205.jpg"
+                alt="Memory 5">
+        </div>
+
+        <div class="photo-number">
+            MEMORY 05
+        </div>
+
+    </div>
+
+
+    <!-- MEMORY 6 -->
+
+    <div class="memory">
+
+        <h2 class="question">
+            Question 6: Is this one of our unforgettable moments? 💕
+        </h2>
+
+        <p class="answer">
+            Answer: Absolutely. Some memories stay in our hearts
+            forever. ❤️
+        </p>
+
+        <div class="photo-box">
+            <img
+                src="./photo%206.jpg"
+                alt="Memory 6">
+        </div>
+
+        <div class="photo-number">
+            MEMORY 06
+        </div>
+
+    </div>
+
+
+    <!-- MEMORY 7 -->
+
+    <div class="memory">
+
+        <h2 class="question">
+            Question 7: Why do simple moments become precious? 💗
+        </h2>
+
+        <p class="answer">
+            Answer: Because happiness is often hidden
+            in the simplest moments we share. ❤️
+        </p>
+
+        <div class="photo-box">
+            <img
+                src="./photo%207.jpg"
+                alt="Memory 7">
+        </div>
+
+        <div class="photo-number">
+            MEMORY 07
+        </div>
+
+    </div>
+
+
+    <!-- MEMORY 8 -->
+
+    <div class="memory">
+
+        <h2 class="question">
+            Question 8: Would you forget this day? 🥹
+        </h2>
+
+        <p class="answer">
+            Answer: Never. This memory will always have
+            a special place in my heart. ❤️
+        </p>
+
+        <div class="photo-box">
+            <img
+                src="./photo%208.jpg"
+                alt="Memory 8">
+        </div>
+
+        <div class="photo-number">
+            MEMORY 08
+        </div>
+
+    </div>
+
+
+    <!-- MEMORY 9 -->
+
+    <div class="memory">
+
+        <h2 class="question">
+            Question 9: What is the best thing about this memory? ❤️
+        </h2>
+
+        <p class="answer">
+            Answer: The people, the smiles and the feeling
+            that made this moment beautiful. 💕
+        </p>
+
+        <div class="photo-box">
+            <img
+                src="./photo%209.jpg"
+                alt="Memory 9">
+        </div>
+
+        <div class="photo-number">
+            MEMORY 09
+        </div>
+
+    </div>
+
+
+    <!-- MEMORY 10 -->
+
+    <div class="memory">
+
+        <h2 class="question">
+            Question 10: Can time take away this memory? 💗
+        </h2>
+
+        <p class="answer">
+            Answer: No. Time may pass, but beautiful memories
+            remain with us. ❤️
+        </p>
+
+        <div class="photo-box">
+            <img
+                src="./photo%2010.jpg"
+                alt="Memory 10">
+        </div>
+
+        <div class="photo-number">
+            MEMORY 10
+        </div>
+
+    </div>
+
+
+    <!-- MEMORY 11 -->
+
+    <div class="memory">
+
+        <h2 class="question">
+            Question 11: What would you say about this moment? 🥰
+        </h2>
+
+        <p class="answer">
+            Answer: I would simply say — this moment
+            is precious. ❤️
+        </p>
+
+        <div class="photo-box">
+            <img
+                src="./photo%2011.jpg"
+                alt="Memory 11">
+        </div>
+
+        <div class="photo-number">
+            MEMORY 11
+        </div>
+
+    </div>
+
+
+    <!-- MEMORY 12 -->
+
+    <div class="memory">
+
+        <h2 class="question">
+            Question 12: Is this a memory worth keeping forever? 💕
+        </h2>
+
+        <p class="answer">
+            Answer: Yes. It is a little piece of happiness
+            that I never want to lose. ❤️
+        </p>
+
+        <div class="photo-box">
+            <img
+                src="./photo%2012.jpg"
+                alt="Memory 12">
+        </div>
+
+        <div class="photo-number">
+            MEMORY 12
+        </div>
+
+    </div>
+
+
+    <!-- MEMORY 13 -->
+
+    <div class="memory">
+
+        <h2 class="question">
+            Question 13: What does this photo remind you of? 💗
+        </h2>
+
+        <p class="answer">
+            Answer: It reminds me of the love, laughter
+            and beautiful memories we shared. ❤️
+        </p>
+
+        <div class="photo-box">
+            <img
+                src="./photo%2013.jpg"
+                alt="Memory 13">
+        </div>
+
+        <div class="photo-number">
+            MEMORY 13
+        </div>
+
+    </div>
+
+
+    <!-- MEMORY 14 -->
+
+    <div class="memory">
+
+        <h2 class="question">
+            Question 14: Would you keep this memory forever? ❤️
+        </h2>
+
+        <p class="answer">
+            Answer: Definitely. Beautiful memories
+            are treasures of the heart. 💕
+        </p>
+
+        <div class="photo-box">
+            <img
+                src="./photo%2014.jpg"
+                alt="Memory 14">
+        </div>
+
+        <div class="photo-number">
+            MEMORY 14
+        </div>
+
+    </div>
+
+
+    <!-- MEMORY 15 -->
+
+    <div class="memory">
+
+        <h2 class="question">
+            Question 15: What will you remember most? ❤️
+        </h2>
+
+        <p class="answer">
+            Answer: I will remember this moment,
+            the smile and the love behind it. ❤️
+        </p>
+
+        <div class="photo-box">
+            <img
+                src="./photo%2015.jpg"
+                alt="Memory 15">
+        </div>
+
+        <div class="photo-number">
+            MEMORY 15
+        </div>
+
+    </div>
+
+
+    <!-- FINAL MESSAGE -->
+
+    <div class="final-message">
+
+        <h2>
+            For My Mama ❤️
+        </h2>
 
         <p>
-            Some memories are too beautiful to forget.
-            <br>
-            You are one of those beautiful memories.
+            Every picture has a story.<br>
+            Every moment has a feeling.<br>
+            And every memory is precious. ❤️
             <br><br>
-            Thank you for being a special part of my life. ❤️
+            With lots of love. 💕
         </p>
 
     </div>
 
 </div>
 
+
 <script>
 
-const music = document.getElementById("backgroundMusic");
-const musicButton = document.getElementById("musicButton");
+const song = document.getElementById("song");
+const button = document.getElementById("musicButton");
 
-function toggleMusic() {
+function playMusic() {
 
-    if (music.paused) {
+    if (song.paused) {
 
-        music.play()
-            .then(function() {
-                musicButton.innerHTML = "🔊";
-            })
-            .catch(function() {
-                alert("Please tap the music button again to play the song.");
-            });
+        song.play()
+        .then(() => {
+            button.innerHTML = "🔊";
+        })
+        .catch(() => {
+            alert("Tap the 🎵 button once more to start the music.");
+        });
 
     } else {
 
-        music.pause();
-        musicButton.innerHTML = "🎵";
+        song.pause();
+        button.innerHTML = "🎵";
 
     }
 }
